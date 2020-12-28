@@ -14,4 +14,8 @@ class Departement extends Model
       'description',
       'image_path',
     ];
+
+    public function site(){
+        return $this->hasMany(Site::class)->orderBy('created_at','DESC');
+    }
 }
