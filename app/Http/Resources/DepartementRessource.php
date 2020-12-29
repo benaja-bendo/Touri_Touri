@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Departement;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class DepartementRessource extends JsonResource
@@ -20,6 +21,7 @@ class DepartementRessource extends JsonResource
             'title'=>$this->title,
             'description'=>$this->description,
             'image_path'=>$this->image_path,
+            'sites'=> SiteRessource::collection(Departement::find($this->id)->site),
         ];
     }
 }
