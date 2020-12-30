@@ -10,15 +10,21 @@ class Site extends Model
     use HasFactory;
 
     protected $fillable = [
-      'title',
-      'description',
-      'imageP_path',
-      'prix',
-      'santer_securite',
-      'departement_id',
+        'title',
+        'description',
+        'imageP_path',
+        'prix',
+        'santer_securite',
+        'departement_id',
     ];
 
-    public function departement(){
+    public function departement()
+    {
         return $this->belongsTo(Departement::class);
+    }
+
+    public function galerie()
+    {
+        return $this->hasMany(Galerie::class)->orderBy('created_at','DESC');
     }
 }

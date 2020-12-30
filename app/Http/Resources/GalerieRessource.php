@@ -2,11 +2,9 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Departement;
-use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DepartementRessource extends JsonResource
+class GalerieRessource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -20,11 +18,7 @@ class DepartementRessource extends JsonResource
         return [
             'id'=>$this->id,
             'title'=>$this->title,
-            'description'=>$this->description,
             'image_path'=>$this->image_path,
-            'created_at'=> Carbon::parse($this->created_at)->format('d M. Y'),
-            'updated_at'=> Carbon::parse($this->updated_at)->format('d M. Y'),
-            'sites'=> SiteRessource::collection(Departement::find($this->id)->site),
         ];
     }
 }

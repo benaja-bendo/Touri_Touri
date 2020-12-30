@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Site;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -23,8 +24,8 @@ class SiteRessource extends JsonResource
             'imageP_path'=> $this->imageP_path,
             'prix'=> $this->prix,
             'santer_securite'=> $this->santer_securite,
-            'created_at'=> Carbon::parse($this->created_at)->format('d M. Y'),
             'updated_at'=> Carbon::parse($this->updated_at)->format('d M. Y'),
+            'galerie'=> GalerieRessource::collection(Site::find($this->id)->galerie),
         ];
     }
 }

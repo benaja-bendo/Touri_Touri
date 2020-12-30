@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\DepartementController;
+use App\Http\Controllers\API\GalerieController;
 use App\Http\Controllers\API\SiteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('departement',DepartementController::class);
 Route::resource('site',SiteController::class);
+Route::resource('galerie',GalerieController::class);
