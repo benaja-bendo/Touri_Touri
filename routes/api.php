@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\DepartementController;
+use App\Http\Controllers\API\DeplacementController;
 use App\Http\Controllers\API\GalerieController;
 use App\Http\Controllers\API\SiteController;
 use Illuminate\Http\Request;
@@ -24,3 +25,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::resource('departement',DepartementController::class);
 Route::resource('site',SiteController::class);
 Route::resource('galerie',GalerieController::class);
+Route::resource('deplacement',DeplacementController::class);
+Route::resource('shop',DeplacementController::class);

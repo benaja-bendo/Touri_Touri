@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Deplacement;
+use App\Models\Shop;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DeplacementFactory extends Factory
+class ShopFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Deplacement::class;
+    protected $model = Shop::class;
 
     /**
      * Define the model's default state.
@@ -22,11 +22,7 @@ class DeplacementFactory extends Factory
     public function definition()
     {
         return [
-            'title'=>$this->faker->text,
-            'type'=>'terreste',
-            'image_path'=>$this->faker->imageUrl(),
-            'etat'=>'bon',
-            'site_id'=>$this->faker->numberBetween(1,50),
+            //
         ];
     }
 }

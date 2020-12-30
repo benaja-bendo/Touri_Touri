@@ -3,20 +3,18 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\GalerieRessource;
-use App\Models\Galerie;
 use Illuminate\Http\Request;
 
-class GalerieController extends Controller
+class ShopController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return GalerieRessource::collection(Galerie::all());
+        //
     }
 
     /**
@@ -34,18 +32,11 @@ class GalerieController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return GalerieRessource || @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $galerie = Galerie::find($id);
-        if ($galerie) {
-            return new GalerieRessource($galerie);
-        } else {
-            return response([
-                'statut' => 0
-            ], 404);
-        }
+        //
     }
 
     /**

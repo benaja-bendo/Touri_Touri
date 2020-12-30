@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\GalerieRessource;
-use App\Models\Galerie;
+use App\Http\Resources\DeplacementRessource;
+use App\Models\Deplacement;
 use Illuminate\Http\Request;
 
-class GalerieController extends Controller
+class DeplacementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class GalerieController extends Controller
      */
     public function index()
     {
-        return GalerieRessource::collection(Galerie::all());
+        return DeplacementRessource::collection(Deplacement::all());
     }
 
     /**
@@ -34,18 +34,21 @@ class GalerieController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return GalerieRessource || @return \Illuminate\Http\Response
+     * @return DeplacementRessource
      */
     public function show($id)
     {
-        $galerie = Galerie::find($id);
-        if ($galerie) {
-            return new GalerieRessource($galerie);
-        } else {
-            return response([
-                'statut' => 0
-            ], 404);
-        }
+       $deplacement = Deplacement::find($id);
+       if ($deplacement){
+           return new DeplacementRessource($deplacement);
+       }else{
+           return response(
+             [
+                 'statut' => 0
+             ],
+             404
+           );
+       }
     }
 
     /**

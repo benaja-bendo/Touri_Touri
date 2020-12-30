@@ -27,4 +27,8 @@ class Site extends Model
     {
         return $this->hasMany(Galerie::class)->orderBy('created_at','DESC');
     }
+
+    public function deplacement(){
+        return $this->hasMany(Deplacement::class)->orderBy('created_at','DESC');
+    }
 }
