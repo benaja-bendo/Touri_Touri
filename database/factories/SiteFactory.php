@@ -22,8 +22,8 @@ class SiteFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->company,
-            'description' => $this->faker->text,
+            'title' => $this->faker->text(20),
+            'description' => $this->faker->text(),
             'description' => $this->faker->realText(),
             'imageP_path' => $this->faker->imageUrl(),
             'prix' => $this->faker->numberBetween(1000,100000),

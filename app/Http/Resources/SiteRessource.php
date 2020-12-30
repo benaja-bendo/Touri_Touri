@@ -26,7 +26,8 @@ class SiteRessource extends JsonResource
             'santer_securite'=> $this->santer_securite,
             'updated_at'=> Carbon::parse($this->updated_at)->format('d M. Y'),
             'galerie'=> GalerieRessource::collection(Site::find($this->id)->galerie),
-            'deplacement'=> DeplacementRessource::collection(Site::find($this->id)->deplacement),
+            'deplacements'=> DeplacementRessource::collection(Site::find($this->id)->deplacement),
+            'restaurants'=> RestaurantRessource::collection(Site::find($this->id)->restaurant),
         ];
     }
 }

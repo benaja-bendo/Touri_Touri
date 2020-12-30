@@ -22,7 +22,7 @@ class DepartementFactory extends Factory
     public function definition()
     {
         return [
-            'title'=> $this->faker->company,
+            'title'=> $this->faker->country,
             'description'=> $this->faker->text(200),
             'image_path'=> $this->faker->imageUrl(),
         ];

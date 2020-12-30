@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Shop extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+      'title',
+      'image_path',
+      'site_id',
+    ];
+
+    public function site(){
+        return $this->belongsTo(Site::class);
+    }
 }

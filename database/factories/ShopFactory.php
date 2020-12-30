@@ -22,7 +22,9 @@ class ShopFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title'=>$this->faker->text(10),
+            'image_path'=>$this->faker->imageUrl(),
+            'site_id'=>$this->faker->numberBetween(1,50),
         ];
     }
 }

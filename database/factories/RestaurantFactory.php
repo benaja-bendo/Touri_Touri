@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Deplacement;
+use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DeplacementFactory extends Factory
+class RestaurantFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Deplacement::class;
+    protected $model = Restaurant::class;
 
     /**
      * Define the model's default state.
@@ -23,9 +23,7 @@ class DeplacementFactory extends Factory
     {
         return [
             'title'=>$this->faker->text(20),
-            'type'=>'terreste',
             'image_path'=>$this->faker->imageUrl(),
-            'etat'=>'bon',
             'site_id'=>$this->faker->numberBetween(1,50),
         ];
     }

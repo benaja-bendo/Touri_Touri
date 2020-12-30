@@ -31,4 +31,12 @@ class Site extends Model
     public function deplacement(){
         return $this->hasMany(Deplacement::class)->orderBy('created_at','DESC');
     }
+
+    public function shop(){
+        return $this->hasMany(Shop::class)->orderBy('created_at','DESC');
+    }
+    public function restaurant(){
+        return $this->hasMany(Restaurant::class)->orderBy('created_at','DESC');
+    }
+
 }

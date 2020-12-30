@@ -22,7 +22,7 @@ class GalerieFactory extends Factory
     public function definition()
     {
         return [
-            'title'=>$this->faker->title,
+            'title'=>$this->faker->name(),
             'image_path'=>$this->faker->imageUrl(),
             'site_id'=>$this->faker->numberBetween(1,50),
         ];
