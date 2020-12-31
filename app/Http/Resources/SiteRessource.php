@@ -27,6 +27,7 @@ class SiteRessource extends JsonResource
             'updated_at'=> Carbon::parse($this->updated_at)->format('d M. Y'),
             'galerie'=> GalerieRessource::collection(Site::find($this->id)->galerie),
             'deplacements'=> DeplacementRessource::collection(Site::find($this->id)->deplacement),
+            'shops'=> ShopRessource::collection(Site::find($this->id)->shop),
             'restaurants'=> RestaurantRessource::collection(Site::find($this->id)->restaurant),
         ];
     }
