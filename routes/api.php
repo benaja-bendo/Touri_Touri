@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\DepartementController;
 use App\Http\Controllers\API\DeplacementController;
 use App\Http\Controllers\API\GalerieController;
+use App\Http\Controllers\API\ReservationController;
 use App\Http\Controllers\API\RestaurantController;
 use App\Http\Controllers\API\ShopController;
 use App\Http\Controllers\API\SiteController;
@@ -30,3 +31,12 @@ Route::resource('galerie',GalerieController::class);
 Route::resource('deplacement',DeplacementController::class);
 Route::resource('shop',ShopController::class);
 Route::resource('restaurant',RestaurantController::class);
+
+Route::post('user/register',[\App\Http\Controllers\API\UserController::class,'register']);
+Route::post('user/login',[\App\Http\Controllers\API\UserController::class,'login']);
+Route::get('user/reservation/{user}',[\App\Http\Controllers\API\UserController::class,'reservation']);
+
+//Route::get('reservation', [ReservationController::class,'index']);
+//Route::get('reservation/{user}', [ReservationController::class,'myReservation']);
+//Route::post('reservation/{user}', [ReservationController::class,'store']);
+Route::resource('reservation', ReservationController::class);

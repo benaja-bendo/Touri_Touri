@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'telephone',
     ];
 
     /**
@@ -58,4 +59,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function reservation(){
+        return $this->hasMany(Reservation::class)->orderBy('created_at','DESC');
+    }
+
+    public function star(){
+        return $this->hasMany(Star::class)->orderBy('created_at','DESC');
+    }
 }
