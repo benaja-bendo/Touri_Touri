@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\Site;
+use App\Models\Star;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -24,6 +25,7 @@ class SiteRessource extends JsonResource
             'imageP_path'=> $this->imageP_path,
             'prix'=> $this->prix,
             'santer_securite'=> $this->santer_securite,
+            'star'=> StarRessource::collection(Site::find($this->id)->star)->avg('point'),
             'updated_at'=> Carbon::parse($this->updated_at)->format('d M. Y'),
             'galerie'=> GalerieRessource::collection(Site::find($this->id)->galerie),
             'deplacements'=> DeplacementRessource::collection(Site::find($this->id)->deplacement),

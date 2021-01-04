@@ -21,7 +21,7 @@ class CreateStarsTable extends Migration
             $table->foreignId('user_id')
                 ->constrained()
                 ->onDelete('cascade');
-            $table->integer('point');
+            $table->float('point');
             $table->timestamps();
         });
     }
