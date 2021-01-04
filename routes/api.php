@@ -7,6 +7,7 @@ use App\Http\Controllers\API\ReservationController;
 use App\Http\Controllers\API\RestaurantController;
 use App\Http\Controllers\API\ShopController;
 use App\Http\Controllers\API\SiteController;
+use App\Http\Controllers\API\StarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,7 +37,6 @@ Route::post('user/register',[\App\Http\Controllers\API\UserController::class,'re
 Route::post('user/login',[\App\Http\Controllers\API\UserController::class,'login']);
 Route::get('user/reservation/{user}',[\App\Http\Controllers\API\UserController::class,'reservation']);
 
-//Route::get('reservation', [ReservationController::class,'index']);
-//Route::get('reservation/{user}', [ReservationController::class,'myReservation']);
-//Route::post('reservation/{user}', [ReservationController::class,'store']);
 Route::resource('reservation', ReservationController::class);
+Route::resource('star', StarController::class);
+//Route::post('star',[StarController::class,'store']);

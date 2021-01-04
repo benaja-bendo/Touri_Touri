@@ -35,12 +35,15 @@ class Site extends Model
     public function shop(){
         return $this->hasMany(Shop::class)->orderBy('created_at','DESC');
     }
+
     public function restaurant(){
         return $this->hasMany(Restaurant::class)->orderBy('created_at','DESC');
     }
+
     public function reservation(){
         return $this->hasMany(Reservation::class)->orderBy('created_at','DESC');
     }
+
     public function star(){
         return $this->hasMany(Star::class)->orderBy('created_at','DESC');
     }

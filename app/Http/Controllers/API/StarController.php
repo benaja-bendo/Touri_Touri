@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Star;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StarController extends Controller
@@ -20,12 +22,25 @@ class StarController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return void
      */
     public function store(Request $request)
     {
-        //
+
+        $star = new Star();
+        $star->point = $request->point;
+        $star->site_id = $request->site_id;
+        $star->user_id = $request->user_id;
+        if ($star->save()){
+            return response([
+                'statut' => 1
+            ], 404);
+        }else{
+            return response([
+                'statut' => 0
+            ], 404);
+        }
     }
 
     /**
