@@ -21,4 +21,8 @@ class Reservation extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function site(){
+        return $this->belongsTo(Site::class);
+    }
 }
