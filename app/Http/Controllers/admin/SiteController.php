@@ -3,6 +3,12 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Departement;
+use App\Models\Deplacement;
+use App\Models\Galerie;
+use App\Models\Restaurant;
+use App\Models\Shop;
+use App\Models\Site;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -14,7 +20,11 @@ class SiteController extends Controller
      */
     public function index()
     {
-        return view('admin.sites.index');
+        $sites = Site::select('*')->orderBy('created_at', 'DESC')->get();
+//        dd($sites);
+        return view('admin.sites.index',[
+            'sites'=>$sites
+        ]);
     }
 
     /**
@@ -46,7 +56,23 @@ class SiteController extends Controller
      */
     public function show($id)
     {
-        return view('admin.sites.show');
+        $site = Site::find($id);
+        $departement = Departement::find($site->departement_id);
+        $star_site = $site->star()->get()->avg('point');
+        $galeries = Galerie::where('site_id',$id)->get();
+        $shops = Shop::where('site_id',$id)->get();
+        $restaurants = Restaurant::where('site_id',$id)->get();
+//        dd($restaurants);
+        $deplacements = Deplacement::where('site_id',$id)->get();
+        return view('admin.sites.show',[
+            'site'=>$site,
+            'star_site'=>$star_site,
+            'galeries'=>$galeries,
+            'departement'=>$departement,
+            'shops'=>$shops,
+            'restaurants'=>$restaurants,
+            'deplacements'=>$deplacements,
+        ]);
     }
 
     /**
@@ -80,6 +106,9 @@ class SiteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $site= Site::findOrFail($id);
+        if ($site->delete()){
+            return back();
+        }
     }
 }

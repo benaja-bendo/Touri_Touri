@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('telephone')->nullable();
             $table->enum('role', ['admin','user'])->default('user');
+            $table->enum('Enligne', ['0','1','2'])->default('0');// 0 = actif 1= inactif
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

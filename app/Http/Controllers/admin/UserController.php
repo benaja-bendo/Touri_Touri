@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::select('*')->orderBy('created_at', 'DESC')->get();
         return view('admin.utilisateurs.index', [
             'users' => $users
         ]);
@@ -53,10 +53,10 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $reservations = $user->reservation()->leftjoin('sites','sites.id', '=','reservations.site_id')->get();
+        $reservations = $user->reservation()->leftjoin('sites', 'sites.id', '=', 'reservations.site_id')->get();
         return view('admin.utilisateurs.show', [
             'user' => $user,
-            'reservations'=>$reservations
+            'reservations' => $reservations
         ]);
     }
 
@@ -91,6 +91,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+//        dd($id);
+        $user = User::findOrFail($id);
+        if ($user->delete()) {
+            return back();
+        }
     }
 }

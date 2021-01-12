@@ -97,9 +97,10 @@
                                             <a class="dropdown-item"
                                                href="{{ route('user.show',['user'=>$user->id]) }}">Voir profil</a>
                                             {{--                                            <a class="dropdown-item" href="{{ route('user.edit',['user'=>$user->id]) }}">Edit</a>--}}
-                                            <form action="{{ route('user.destroy',['user'=>$user->id]) }}">
+                                            <form action="{{ route('user.destroy',['user'=>$user->id]) }}" method="post">
                                                 @csrf
-                                                <button type="submit" class="dropdown-item text-danger">Delete</button>
+                                                @method('delete')
+                                                <button type="submit" class="dropdown-item text-danger">Supprimer</button>
                                             </form>
                                         </div>
                                     </div>
