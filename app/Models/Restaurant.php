@@ -9,7 +9,14 @@ class Restaurant extends Model
 {
     use HasFactory;
 
-    public function site(){
+    protected $fillable = [
+        'title',
+        'image_path',
+        'site_id',
+    ];
+
+    public function site()
+    {
         return $this->belongsTo(Site::class);
     }
 }

@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\DepartementController;
+use App\Http\Controllers\admin\DeplacementController;
+use App\Http\Controllers\admin\RestaurantController;
+use App\Http\Controllers\admin\ShopController;
 use App\Http\Controllers\admin\SiteController;
 use App\Http\Controllers\admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -28,4 +32,8 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('dashboard')->group(func
     Route::get('/',[DashboardController::class,'index'])->name('dashboard.index');
     Route::resource('user',UserController::class);
     Route::resource('site',SiteController::class);
+    Route::resource('departement',DepartementController::class);
+    Route::resource('restaurant',RestaurantController::class);
+    Route::resource('shop',ShopController::class);
+    Route::resource('deplacement',DeplacementController::class);
 });

@@ -27,6 +27,7 @@
     <!-- ===============================================-->
     <!--    Stylesheets-->
     <!-- ===============================================-->
+    <link href="{{ asset('dist/vendors/glightbox/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('dist/vendors/flatpickr/flatpickr.min.css') }}" rel="stylesheet">
     <link href=" {{ asset('dist/vendors/dropzone/dropzone.min.css') }}" rel="stylesheet">
     <link href="{{ asset('dist/assets/css/theme-rtl.min.css') }}" rel="stylesheet" id="style-rtl"/>
@@ -94,7 +95,7 @@
                                     <span class="nav-link-icon">
                                         <span class="fas fa-chart-pie"></span>
                                     </span>
-                                    <span class="nav-link-text"> Dashboard</span>
+                                    <span class="nav-link-text">Dashboard</span>
                                 </div>
                             </a>
                         </li>
@@ -120,6 +121,9 @@
                                 </div>
                             </a>
                             <ul class="nav collapse" id="astuces" data-parent="#navbarVerticalCollapse">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('departement.index') }}">les departements</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('site.index') }}">Tous les sites</a>
                                 </li>
@@ -697,6 +701,7 @@
 <script src="../../../../polyfill.io/v3/polyfill.min58be.js?features=window.scroll"></script>
 <script src="{{ asset('dist/vendors/list.js/list.min.js') }}"></script>
 <script src="{{ asset('dist/assets/js/theme.js') }}"></script>
+<script src="{{ asset('dist/vendors/glightbox/glightbox.min.js') }}"></script>
 <link
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:100,200,300,400,500,600,700,800,900&amp;display=swap"
     rel="stylesheet">

@@ -3,15 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departement;
-use App\Models\Deplacement;
-use App\Models\Galerie;
-use App\Models\Restaurant;
 use App\Models\Shop;
-use App\Models\Site;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
-class SiteController extends Controller
+class ShopController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,11 +16,7 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $sites = Site::select('*')->orderBy('created_at', 'DESC')->get();
-//        dd($sites);
-        return view('admin.sites.index',[
-            'sites'=>$sites
-        ]);
+        //
     }
 
     /**
@@ -34,10 +26,7 @@ class SiteController extends Controller
      */
     public function create()
     {
-        $departements = Departement::all();
-        return view('admin.sites.create', [
-            'departements' => $departements
-        ]);
+        //
     }
 
     /**
@@ -48,7 +37,19 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Validator::make($request->all(), [
+            'title' => ['required', 'string', 'max:255'],
+            'image_path' => ['required', 'image'],
+        ]);
+        if (request()->hasFile('image_path')) {
+            $image_path = '/storage/' . $request->image_path->store('photos-shop', 'public');
+        }
+        $restaurant = Shop::create([
+            'site_id' => $request->site_id,
+            'title' => $request->title,
+            'image_path' => $image_path,
+        ]);
+        return back()->with('success', 'creation avec success');
     }
 
     /**
@@ -59,23 +60,7 @@ class SiteController extends Controller
      */
     public function show($id)
     {
-        $site = Site::find($id);
-        $departement = Departement::find($site->departement_id);
-        $star_site = $site->star()->get()->avg('point');
-        $galeries = Galerie::where('site_id',$id)->get();
-        $shops = Shop::where('site_id',$id)->get();
-        $restaurants = Restaurant::where('site_id',$id)->get();
-        $deplacements = Deplacement::where('site_id',$id)->get();
-//        dd($deplacements);
-        return view('admin.sites.show',[
-            'site'=>$site,
-            'star_site'=>$star_site,
-            'galeries'=>$galeries,
-            'departement'=>$departement,
-            'shops'=>$shops,
-            'restaurants'=>$restaurants,
-            'deplacements'=>$deplacements,
-        ]);
+        //
     }
 
     /**
@@ -86,10 +71,7 @@ class SiteController extends Controller
      */
     public function edit($id)
     {
-        $departements = Departement::all();
-        return view('admin.sites.edit', [
-            'departements' => $departements
-        ]);
+        //
     }
 
     /**
@@ -101,7 +83,20 @@ class SiteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Validator::make($request->all(), [
+            'title' => ['required', 'string', 'max:255'],
+            'image_path' => ['required', 'image'],
+        ]);
+
+        $restaurant = Shop::findOrFail($id);
+        $restaurant->title = $request->title;
+        $restaurant->site_id = $request->site_id;
+        if (request()->hasFile('image_path')) {
+            $restaurant->image_path  = '/storage/' . $request->image_path->store('photos-shop', 'public');
+        }
+        if ($restaurant->save()) {
+            return back()->with('success', 'creation avec success');
+        }
     }
 
     /**
@@ -112,8 +107,8 @@ class SiteController extends Controller
      */
     public function destroy($id)
     {
-        $site= Site::findOrFail($id);
-        if ($site->delete()){
+        $shop = Shop::findOrFail($id);
+        if ($shop->delete()) {
             return back();
         }
     }

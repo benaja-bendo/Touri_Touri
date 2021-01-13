@@ -25,10 +25,10 @@
                         </div>
                     </div>
                     <div id="table-customers-replace-element">
-                        <button class="btn btn-falcon-default btn-sm" type="button">
-                            <span class="fas fa-external-link-alt" data-fa-transform="shrink-3 down-2"></span>
-                            <span class="d-none d-sm-inline-block ml-1">Export</span>
-                        </button>
+                        <a href="{{ route('site.create') }}" class="btn btn-falcon-default btn-sm">
+                            <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span>
+                            <span class="d-none d-sm-inline-block ml-1">Cree un site</span>
+                        </a>
                     </div>
                 </div>
             </div>
