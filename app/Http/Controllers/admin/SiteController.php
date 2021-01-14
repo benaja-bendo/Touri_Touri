@@ -10,6 +10,7 @@ use App\Models\Restaurant;
 use App\Models\Shop;
 use App\Models\Site;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SiteController extends Controller
 {
@@ -48,7 +49,25 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        dd($request->all());
+        Validator::make($request->all(), [
+            'title' => ['required', 'string', 'max:255'],
+            'prix' => ['required'],
+            'imageP_path' => ['required', 'image'],
+            'departement_id' => ['required'],
+        ]);
+        if (request()->hasFile('imageP_path')) {
+            $imageP_path = '/storage/' . $request->imageP_path->store('photos-site', 'public');
+        }
+        $site = Site::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'imageP_path' => $imageP_path,
+            'prix' => $request->prix,
+            'santer_securite' => $request->santer_securite,
+            'departement_id' => $request->departement_id,
+        ]);
+        return back()->with('success', 'creation avec success');
     }
 
     /**
@@ -86,9 +105,11 @@ class SiteController extends Controller
      */
     public function edit($id)
     {
+        $site = Site::find($id);
         $departements = Departement::all();
         return view('admin.sites.edit', [
-            'departements' => $departements
+            'departements' => $departements,
+            'site'=>$site
         ]);
     }
 

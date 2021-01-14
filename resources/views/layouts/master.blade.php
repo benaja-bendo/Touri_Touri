@@ -122,14 +122,14 @@
                             </a>
                             <ul class="nav collapse" id="astuces" data-parent="#navbarVerticalCollapse">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('departement.index') }}">les departements</a>
+                                    <a class="nav-link" href="{{ route('departement.index') }}">Départements</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('site.index') }}">Tous les sites</a>
+                                    <a class="nav-link" href="{{ route('site.index') }}">Sites</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">gallerie</a>
-                                </li>
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link" href="#">gallerie</a>--}}
+{{--                                </li>--}}
                             </ul>
                         </li>
                         <li class="nav-item">

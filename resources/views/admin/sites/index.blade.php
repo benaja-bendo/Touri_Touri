@@ -71,8 +71,10 @@
                                 <a href="{{ route('site.show',['site'=>$site->id]) }}">
                                     <div class="d-flex d-flex align-items-center">
                                         <div class="avatar avatar-xl mr-2">
-                                            <img class="rounded-circle" src="{{ $site->imageP_path }}"
-                                                 alt="">
+                                            <a href="{{ $site->imageP_path }}">
+                                                <img class="rounded-circle" src="{{ $site->imageP_path }}"
+                                                     alt="">
+                                            </a>
                                         </div>
                                         <div class="flex-1">
                                             <h5 class="mb-0 fs--1">{{ $site->title }}</h5>
@@ -106,7 +108,8 @@
                                         <div class="bg-white py-2">
                                             <a class="dropdown-item"
                                                href="{{ route('site.show',['site'=>$site->id]) }}">detail du site</a>
-                                            <form action="{{ route('site.destroy',['site'=>$site->id]) }}" method="post">
+                                            <form action="{{ route('site.destroy',['site'=>$site->id]) }}"
+                                                  method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="dropdown-item text-danger">
