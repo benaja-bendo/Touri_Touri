@@ -35,7 +35,7 @@ class StarController extends Controller
         if ($star->save()){
             return response([
                 'statut' => 1
-            ], 404);
+            ], 200);
         }else{
             return response([
                 'statut' => 0

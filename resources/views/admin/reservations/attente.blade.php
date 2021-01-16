@@ -71,7 +71,7 @@
                                     </h6>
                                     <p class="mb-1">
                                         Pour le: <span
-                                            class="text-1000">{{ \Carbon\Carbon::parse($reservation->created_reservation)->format('d M. Y')  }}</span>
+                                            class="text-1000">{{ $reservation->date  }}</span>
                                     </p>
                                     <p class="mb-1">
                                         Initier par: <a href="{{ route('user.show',['user'=>$reservation->user_id]) }}"
