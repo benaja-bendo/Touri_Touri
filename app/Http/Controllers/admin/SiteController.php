@@ -67,7 +67,7 @@ class SiteController extends Controller
             'santer_securite' => $request->santer_securite,
             'departement_id' => $request->departement_id,
         ]);
-        return back()->with('success', 'creation avec success');
+        return redirect()->route('site.index')->with('success', 'creation avec success');
     }
 
     /**
@@ -85,7 +85,7 @@ class SiteController extends Controller
         $shops = Shop::where('site_id',$id)->get();
         $restaurants = Restaurant::where('site_id',$id)->get();
         $deplacements = Deplacement::where('site_id',$id)->get();
-//        dd($deplacements);
+
         return view('admin.sites.show',[
             'site'=>$site,
             'star_site'=>$star_site,
@@ -122,7 +122,25 @@ class SiteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Validator::make($request->all(), [
+            'title' => ['required', 'string', 'max:255'],
+            'prix' => ['required'],
+            'imageP_path' => ['required', 'image'],
+            'departement_id' => ['required'],
+        ]);
+
+        $site = Site::findOrFail($id);
+        $site->title = $request->title;
+        $site->description = $request->description;
+        $site->prix = $request->prix;
+        $site->santer_securite = $request->santer_securite;
+        $site->departement_id = $request->departement_id;
+        if (request()->hasFile('imageP_path')) {
+            $site->imageP_path  = '/storage/' . $request->imageP_path->store('photos-site', 'public');
+        }
+        if ($site->save()) {
+            return redirect()->route('site.index')->with('success', 'modification avec success');
+        }
     }
 
     /**

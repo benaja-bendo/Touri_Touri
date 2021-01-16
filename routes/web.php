@@ -3,6 +3,8 @@
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\DepartementController;
 use App\Http\Controllers\admin\DeplacementController;
+use App\Http\Controllers\admin\GallerieController;
+use App\Http\Controllers\admin\ReservationController;
 use App\Http\Controllers\admin\RestaurantController;
 use App\Http\Controllers\admin\ShopController;
 use App\Http\Controllers\admin\SiteController;
@@ -36,4 +38,10 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('dashboard')->group(func
     Route::resource('restaurant',RestaurantController::class);
     Route::resource('shop',ShopController::class);
     Route::resource('deplacement',DeplacementController::class);
+    Route::resource('gallerie',GallerieController::class);
+    Route::resource('gallerie',GallerieController::class);
+
+    Route::get('reservation_en_attente',[ReservationController::class,'attente'])->name('reservation.attente');
+    Route::put('reservation/accepte/{id}/{status}',[ReservationController::class,'accepter'])->name('reservation.accepter');
+    Route::get('reservation_payer',[ReservationController::class,'payer'])->name('reservation.payer');
 });

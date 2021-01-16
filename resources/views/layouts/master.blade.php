@@ -127,13 +127,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('site.index') }}">Sites</a>
                                 </li>
-{{--                                <li class="nav-item">--}}
-{{--                                    <a class="nav-link" href="#">gallerie</a>--}}
-{{--                                </li>--}}
                             </ul>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link dropdown-indicator" href="#reservation" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="astuces">
                                 <div class="d-flex align-items-center">
                                     <span class="nav-link-icon">
                                         <span class="far fa-calendar"></span>
@@ -141,6 +139,14 @@
                                     <span class="nav-link-text">Reservation</span>
                                 </div>
                             </a>
+                            <ul class="nav collapse" id="reservation" data-parent="#navbarVerticalCollapse">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('reservation.attente') }}">En attente</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('reservation.payer') }}">Payer</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

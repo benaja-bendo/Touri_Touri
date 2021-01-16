@@ -17,6 +17,7 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->string('nbr_personne');
             $table->date('date');
+            $table->enum('etat_reservation', ['0','1','2'])->default('0');// 0 = en attente 1= accepter 2 refuser
             $table->string('mode_payement')->nullable();
             $table->foreignId('user_id')
                 ->constrained()

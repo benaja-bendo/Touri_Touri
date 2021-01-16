@@ -12,6 +12,7 @@ class Galerie extends Model
     protected $fillable =[
       'title',
       'image_path',
+      'site_id',
     ];
 
     public function site(){

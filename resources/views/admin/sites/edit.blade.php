@@ -7,6 +7,7 @@
 @section('contenue')
     <form action="{{ route('site.update',['site'=>$site->id]) }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('put')
         <div class="card mb-3">
             <div class="card-body">
                 <div class="row flex-between-center">
@@ -39,7 +40,7 @@
 
                             <div class="row gx-2">
                                 <div class="col-sm-6 mb-3">
-                                    <label class="form-label" for="field-name">Prix du site</label>
+                                    <label class="form-label" for="field-name">Prix de la visite individuelle</label>
                                     <input name="prix" value="{{ $site->prix }}" class="form-control form-control-sm" id="field-name" type="number"
                                            placeholder="">
                                 </div>
@@ -92,9 +93,8 @@
                                 <label class="form-label" for="event-topic">Selectionne un departement</label>
                                 <select
                                     class="form-select" id="event-topic" name="departement_id">
-                                    <option value="" selected="selected">Select de departement</option>
                                     @foreach($departements as $departement)
-                                        <option value="{{ $departement->id }}">{{ $departement->title }}</option>
+                                        <option value="{{ $departement->id }}" @if($site->departement_id === $departement->id) selected @endif>{{ $departement->title }}</option>
                                     @endforeach
                                 </select>
                             </div>

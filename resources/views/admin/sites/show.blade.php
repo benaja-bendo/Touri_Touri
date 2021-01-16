@@ -55,22 +55,79 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <button class="btn btn-falcon-default btn-sm" type="button">
+                            <button class="btn btn-falcon-default btn-sm" type="button" data-toggle="modal"
+                                    data-target="#ajout-gallerie">
                                 <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span>
                                 <span class="d-none d-sm-inline-block ml-1">Ajouter</span>
                             </button>
                         </div>
+                        {{--                    La modal--}}
+                        <div class="modal fade" id="ajout-gallerie" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Ajouter une image</h5>
+                                        <button type="button" class="btn-close" data-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <form action="{{ route('gallerie.store') }}" method="post"
+                                          enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" name="site_id" value="{{ $site->id }}">
+                                        <div class="modal-body">
+                                            <div class="p-4 pb-0">
+                                                <div class="mb-3">
+                                                    <label class="col-form-label"
+                                                           for="recipient-name">
+                                                        Titre de l'image:
+                                                    </label>
+                                                    <input name="title" class="form-control" id="recipient-name"
+                                                           type="text">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="col-form-label">L'image:</label>
+                                                    <div class="form-file">
+                                                        <input name="image_path" class="form-file-input" id="customFile"
+                                                               type="file"/>
+                                                        <label class="form-file-label" for="customFile">
+                                                            <span class="form-file-text">Choisir une image...</span>
+                                                            <span class="form-file-button">Browse</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="card-body overflow-hidden">
                     <div class="row mx-n1">
                         @foreach($galeries as $galerie)
                             <div class="col-6 p-1">
-                                <a href="{{ asset('dist/assets/img/generic/4.jpg') }}" data-gallery="gallery-1">
+                                <a href="{{ $galerie->image_path }}" data-gallery="gallery-1">
                                     <img
-                                        class="img-fluid rounded" src="{{ asset('dist/assets/img/generic/4.jpg') }}"
+                                        class="img-fluid rounded" src="{{ $galerie->image_path }}"
                                         alt=""/>
                                 </a>
+                                <form
+                                      action="{{ route('gallerie.destroy',['gallerie'=>$galerie->id]) }}"
+                                      method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-link btn-sm btn-reveal text-600">
+                                        <span class="far fa-trash-alt"></span>
+                                    </button>
+                                </form>
                             </div>
                         @endforeach
                     </div>

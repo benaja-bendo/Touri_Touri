@@ -38,7 +38,7 @@
 
                             <div class="row gx-2">
                                 <div class="col-sm-6 mb-3">
-                                    <label class="form-label" for="field-name">Prix du site</label>
+                                    <label class="form-label" for="field-name">Prix de la visite individuelle</label>
                                     <input name="prix" class="form-control form-control-sm" id="field-name" type="number"
                                            placeholder="">
                                 </div>

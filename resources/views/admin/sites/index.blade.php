@@ -5,6 +5,11 @@
 @endsection
 
 @section('contenue')
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="card mb-3" id="customersTable"
          data-list='{"valueNames":["name","email","phone","address","joined"],"page":10,"pagination":true}'>
         <div class="card-header">
