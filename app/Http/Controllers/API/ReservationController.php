@@ -33,7 +33,7 @@ class ReservationController extends Controller
 //        dd($request->all());
         Validator::make($request->all(), [
             'nbr_personne' => ['required','numeric'],
-            'date' => ['required', 'date'],
+            'date' => ['required'],
             'user_id' => ['required'],
             'site_id' => ['required'],
         ])->validate();
