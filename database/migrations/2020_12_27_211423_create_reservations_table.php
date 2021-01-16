@@ -16,7 +16,7 @@ class CreateReservationsTable extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->string('nbr_personne');
-            $table->date('date');
+            $table->string('date');
             $table->enum('etat_reservation', ['0','1','2'])->default('0');// 0 = en attente 1= accepter 2 refuser
             $table->string('mode_payement')->nullable();
             $table->foreignId('user_id')
