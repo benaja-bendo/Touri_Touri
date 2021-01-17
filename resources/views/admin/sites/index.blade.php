@@ -82,7 +82,9 @@
                                             </a>
                                         </div>
                                         <div class="flex-1">
-                                            <h5 class="mb-0 fs--1">{{ $site->title }}</h5>
+                                            <a href="{{ route('site.show',['site'=>$site->id]) }}">
+                                                <h5 class="mb-0 fs--1">{{ $site->title }}</h5>
+                                            </a>
                                         </div>
                                     </div>
                                 </a>

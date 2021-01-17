@@ -91,9 +91,9 @@
                                 <form action="{{ route('reservation.accepter',['status'=>1,'id'=>$reservation->reservations_id]) }}" method="post">
                                     @csrf
                                     @method('put')
-                                    <button class="btn btn-link btn-sm btn-reveal text-600"
+                                    <button class="btn  btn-sm btn-reveal text-600"
                                             type="submit">
-                                        <span class="far fa-thumbs-up"></span>
+                                        <span class="far fa-thumbs-up"></span> accepter
                                     </button>
                                 </form>
 
