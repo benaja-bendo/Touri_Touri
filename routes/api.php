@@ -36,6 +36,7 @@ Route::resource('restaurant',RestaurantController::class);
 Route::post('user/register',[\App\Http\Controllers\API\UserController::class,'register']);
 Route::post('user/login',[\App\Http\Controllers\API\UserController::class,'login']);
 Route::get('user/reservation/{user}',[\App\Http\Controllers\API\UserController::class,'reservation']);
+Route::get('user/reservation/{user}/count',[\App\Http\Controllers\API\UserController::class,'countResercvation']);
 
 Route::resource('reservation', ReservationController::class);
 Route::resource('star', StarController::class);
