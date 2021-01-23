@@ -17,9 +17,9 @@ class ReservationRessource extends JsonResource
      */
     public function toArray($request)
     {
-        if ($this->etat_reservation =='0'){
+        if ($this->etat_reservation ==0){
             $etat= 'en attente';
-        }elseif ($this->etat_reservation =='1'){
+        }elseif ($this->etat_reservation ==1){
             $etat= 'payer';
         }
 //        return parent::toArray($request);
