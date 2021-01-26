@@ -24,6 +24,7 @@ class DepartementRessource extends JsonResource
             'image_path'=>$this->image_path,
             'created_at'=> Carbon::parse($this->created_at)->format('d M. Y'),
             'updated_at'=> Carbon::parse($this->updated_at)->format('d M. Y'),
+            'nbr_sites'=> count(SiteRessource::collection(Departement::find($this->id)->site)),
             'sites'=> SiteRessource::collection(Departement::find($this->id)->site),
         ];
     }
