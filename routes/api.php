@@ -5,6 +5,7 @@ use App\Http\Controllers\API\DeplacementController;
 use App\Http\Controllers\API\GalerieController;
 use App\Http\Controllers\API\ReservationController;
 use App\Http\Controllers\API\RestaurantController;
+use App\Http\Controllers\API\SearchController;
 use App\Http\Controllers\API\ShopController;
 use App\Http\Controllers\API\SiteController;
 use App\Http\Controllers\API\StarController;
@@ -25,6 +26,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('search/{q}',[SearchController::class,'search']);
 
 Route::resource('departement',DepartementController::class);
 Route::resource('site',SiteController::class);
